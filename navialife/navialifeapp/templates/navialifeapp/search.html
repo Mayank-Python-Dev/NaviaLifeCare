@@ -1,0 +1,51 @@
+{% extends 'navialifeapp/base.html' %}
+{% block content %}
+<div class="alert alert-dark" role="alert">
+  <h3 style= "text-align: center;">SEARCH</h3>
+</div>
+
+
+{% for message in messages %}
+<div class="container">
+<div class="card">
+  
+  <div class="card-header">
+    <div class="alert alert-{{message.tags}}">
+          <h3>{{message}}</h3>
+  </div>
+  <div class="card-body">
+</div>
+</div>
+{% endfor %}
+
+</div>
+
+<div class="container">
+	<form method="post">
+		{% csrf_token %}
+  			<label for="exampleFormControlTextarea1" class="form-label"></label>
+  				<textarea class="form-control" id="exampleFormControlTextarea1" name = 'getText' rows="3" required></textarea>
+  				<br>
+  				<input type="submit" class="btn btn-dark btn-block" name=add value="Search">
+  	</form>
+  	<br>
+</div>
+{% for x in getMedicalData %}
+<div class="container">
+<div class="card">
+  
+  <div class="card-header">
+    Successfully Done !
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"></h5>
+    <p class="card-text">sku_id : {{x.sku_id}}, product_id : {{x.product_id}}, sku_name : {{x.sku_name}}, price : {{x.price}}, manufacturer_name : {{x.manufacturer_name}}, salt_name : {{x.salt_name}}, drug_form : {{x.drug_form}},
+                      Pack_size : {{x.Pack_size}}, strength : {{x.strength}}, product_banned_flag : {{x.product_banned_flag}}, unit : {{x.unit}}, price_per_unit : {{x.price_per_unit}}</p>
+  </div>
+
+</div>
+</div>
+{% endfor %}
+
+
+{% endblock %}
